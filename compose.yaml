@@ -1,0 +1,14 @@
+services:
+  nginx:
+    image: nginx:stable
+    ports:
+      - "8080:80"
+    volumes:
+      - '.:/srv'
+      - './docker/nginx/conf.d:/etc/nginx/conf.d'
+    depends_on:
+      - php
+  php:
+    build: ./docker/php
+    volumes:
+      - '.:/srv'
